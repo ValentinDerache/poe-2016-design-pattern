@@ -33,7 +33,7 @@ class Router
         $route = $_GET['route'];
 
         if(isset($this->config[$route])) {
-            $this->container
+            $this->container;
             //$this->container->get();
 
         } else {
