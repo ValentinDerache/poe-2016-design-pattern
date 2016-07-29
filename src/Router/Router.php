@@ -33,13 +33,14 @@ class Router
         $route = $_GET['route'];
 
         if(isset($this->config[$route])) {
-            $this->container;
-            //$this->container->get();
+            $controller = $this->container->get($this->config[$route]);
+            $controller->indexAction();
 
         } else {
             header("HTTP/1.0 404 Not Found");
-            exit;
+
         }
+        exit();
     }
 
 

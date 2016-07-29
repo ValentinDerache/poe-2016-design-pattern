@@ -17,7 +17,16 @@ class RouterFactory implements FactoryInterface
 
     public function CreateService(ContainerInterface $container)
     {
+        $config = $container->get('configuration');
 
+        if (!$config->offsetExists('routes')) {
+            $config->offsetSet('routes', []);
+
+        }
+
+        $configRoute = $config->offsetGet('routes')->getArrayCopy();
+
+        return new Router($configRoute, $container);
     }
 
 }
